@@ -1,0 +1,7 @@
+var staff = [
+                 {id: 01, name: 'Conor McBride', wage: 10, role: 'bar'},
+                 {id: 02, name: 'Barry Allan', wage: 20, role: 'waiter'},
+                 {id: 03, name: 'Rob Power', wage: 30, role: 'kitchen'}
+                ];
+
+module.exports = staff;
