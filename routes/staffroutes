@@ -19,5 +19,24 @@ router.search = function(req, res) {
     }
 
 }
+router.newStaff = function(req, res) {
+
+    var id = Math.floor((Math.random() * 101) + 1);
+    var name = "brian";
+    var wage = 12;
+    var role = "Waiter";
+    var currentSize = staff.length;
+
+    staff.push({id: id, name: name, wage: wage, role: role});
+
+    if ((currentSize + 1) != staff.length) {
+        res.json({message: 'Staff member added'});
+    }
+
+    else {
+        res.json({message: 'nobody added!'});
+    }
+
+}
 
 module.exports = router;
