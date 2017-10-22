@@ -1,4 +1,4 @@
-var staff = require('../models/staff');
+var staffarray = require('../models/staff');
 var express = require('express');
 var router = express.Router();
 
@@ -19,8 +19,9 @@ router.search = function(req, res) {
     }
 
 }
+staffarray.push({id: id, name: name, wage: wage, role: role});
 router.newStaff = function(req, res) {
-
+    var staff = staffarray;
     var id = Math.floor((Math.random() * 101) + 1);
     var name = "brian";
     var wage = 12;
