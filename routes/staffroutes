@@ -6,9 +6,18 @@ router.findAll = function(req, res) {
 
     res.json(staff);
 };
+router.findOne = function(req, res) {
 
+    var singlestaff = getByValue(staff,req.params.id);
+
+    if(singlestaff != null)
+        res.json(singlestaff);
+    else
+        res.json({ message: 'Staff member not Found!'});
+}
 //staffarray.push({id: id, name: name, wage: wage, role: role});
-router.newStaff = function(req,res) {
+
+/*router.newStaff = function(req,res) {
 
 
     var singlestaff = getByValue(staff, req.params.id);
@@ -21,7 +30,7 @@ router.newStaff = function(req,res) {
             res.json({message:'Staff ID not recognised'});
         }
 
-    })*/
+    })
     if(singlestaff != null){
         res.json(singlestaff);
     }else{
@@ -30,7 +39,8 @@ router.newStaff = function(req,res) {
     }
     //res.json(singlestaff);
 
-}
+}*/
+
 
 function getByValue(arr, id) {
 
@@ -43,17 +53,18 @@ function getByValue(arr, id) {
 }
 
 router.deleteStaff= function(req, res) {
-    var staffmem = getByValue(staff,req.params.id);
+    var staffmem = getByValue(staff, req.params.id);
     var index = staff.indexOf(staffmem);
 
     var currentSize = staff.length;
     staff.splice(index, 1);
 
-    if((currentSize - 1) == staff.length)
-        res.json({ message: 'Staff member deleted!'});
+    if ((currentSize - 1) == staff.length)
+        res.json({message: 'Staff member deleted!'});
     else
-        res.json({ message: 'Staff member not deleted!'});
-
+        res.json({message: 'Staff member not deleted!'});
+}
+router.newStaff=function(req, res){
     var id = Math.floor((Math.random() * 101) + 1);
     var name = 'brian';
     var wage = 12;
@@ -72,4 +83,6 @@ router.deleteStaff= function(req, res) {
 
 
 }
+
+
 module.exports = router;

@@ -26,13 +26,14 @@ app.use('/', index);
 app.use('/users', users);
 
 
-app.get('/stafflist', staffroutes.findAll);
-app.get('/stafflist/:id', staffroutes.search);
-app.delete('/delete/:id', staffroutes.deleteStaff);
-
+//app.get('/stafflist', staffroutes.findAll);
+//app.get('/stafflist/:id', staffroutes.search);
+app.delete('/staff/:id', staffroutes.deleteStaff);
+app.get('/staff/:id', staffroutes.findOne);
 
 app.get('/staff', staffroutes.findAll);
 app.post('/staff', staffroutes.newStaff);
+
 
 
 
