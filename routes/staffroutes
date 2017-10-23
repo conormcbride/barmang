@@ -1,10 +1,10 @@
-var staffarray = require('../models/staff');
+var staff = require('../models/staff');
 var express = require('express');
 var router = express.Router();
 
 router.findAll = function(req, res) {
     // Return a JSON representation of our list
-    res.json(staffarray);
+    res.json(staff);
 };
 
 //staffarray.push({id: id, name: name, wage: wage, role: role});
@@ -14,16 +14,16 @@ router.newStaff = function(req, res) {
     var name = "brian";
     var wage = 12;
     var role = "Waiter";
-    var currentSize = staffarray.length;
+    var currentSize = staff.length;
 
-    staffarray.push({"id": id, "name": name, "wage": wage, "role": role});
+    staff.push({"id": id, "name": name, "wage": wage, "role": role});
 
-    if ((currentSize + 1) != staffarray.length) {
+    if ((currentSize + 1) != staff.length) {
         res.json({message: 'Staff member added'});
     }
 
     else {
-        res.json({message: 'nobody added!'});
+        res.json({message: 'Nothing added!'});
     }
 
 };
