@@ -39,5 +39,17 @@ function getByValue(arr, id) {
 
     return result ? result[0] : null; // or undefined
 }
+router.deleteStaff= function(req, res) {
+    //Delete the selected donation based on its id
+    var staffmem = getByValue(staff,req.params.id);
+    var index = staff.indexOf(staffmem);
 
+    var currentSize = staff.length;
+    staff.splice(index, 1);
+
+    if((currentSize - 1) == staff.length)
+        res.json({ message: 'Staff member deleted!'});
+    else
+        res.json({ message: 'Staff member not deleted!'});
+}
 module.exports = router;
