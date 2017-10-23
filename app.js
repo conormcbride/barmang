@@ -25,9 +25,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 
+
 app.get('/stafflist', staffroutes.findAll);
 app.get('/stafflist/:id', staffroutes.search);
 app.delete('/delete/:id', staffroutes.deleteStaff);
+
+
+app.get('/staff', staffroutes.findAll);
+app.post('/staff', staffroutes.newStaff);
 
 
 

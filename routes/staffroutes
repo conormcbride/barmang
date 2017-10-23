@@ -5,9 +5,11 @@ var router = express.Router();
 router.findAll = function(req, res) {
 
     res.json(staff);
-}
+};
 
-router.search = function(req, res) {
+//staffarray.push({id: id, name: name, wage: wage, role: role});
+router.newStaff = function(req,res) {
+
 
     var singlestaff = getByValue(staff, req.params.id);
     //staffid= req.params.id;
@@ -51,5 +53,23 @@ router.deleteStaff= function(req, res) {
         res.json({ message: 'Staff member deleted!'});
     else
         res.json({ message: 'Staff member not deleted!'});
+
+    var id = Math.floor((Math.random() * 101) + 1);
+    var name = 'brian';
+    var wage = 12;
+    var role = 'Waiter';
+    var currentSize = staff.length;
+
+    staff.push({"id": id, "name": name, "wage": wage, "role": role});
+
+    if ((currentSize + 1) == staff.length)
+        res.json({ message: 'Staff member added'});
+
+
+    else
+        res.json( { message: 'Nothing added'});
+
+
+
 }
 module.exports = router;
