@@ -9,15 +9,35 @@ router.findAll = function(req, res) {
 
 router.search = function(req, res) {
 
-    staff = getByValue(staff, req.params.id);
+    var singlestaff = getByValue(staff, req.params.id);
+    //staffid= req.params.id;
+    /*forEach(function (staff){
+        if(staffid == id){
+            res.json(staffid);
+        }
+        else{
+            res.json({message:'Staff ID not recognised'});
+        }
 
-    if(staff!=null){
-        res.json(staff);
+    })*/
+    if(singlestaff != null){
+        res.json(singlestaff);
     }else{
 
-        res.json({message:'Staff member not recognised'});
+        res.json({message:'Staff ID not recognised'});
     }
+    //res.json(singlestaff);
 
+}
+
+function getByValue(arr, id) {
+
+    var result;
+    result = arr.filter(function (o) {
+        return o.id == id;
+    });
+
+    return result ? result[0] : null; // or undefined
 }
 
 module.exports = router;
