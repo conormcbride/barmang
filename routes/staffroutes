@@ -92,8 +92,7 @@ router.newStaff=function(req, res){
 }
 
 
-<<<<<<< HEAD
-=======
+
 router.addDaysabsent = function(req, res) {
 
     var staffmem = getByValue(staff,req.params.id);
@@ -104,5 +103,5 @@ router.addDaysabsent = function(req, res) {
         staff.role == req.body.role;
     }*/
 }
->>>>>>> update-function
+
 module.exports = router;
