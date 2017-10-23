@@ -43,25 +43,28 @@ function getByValue(arr, id) {
 }
 
 router.deleteStaff= function(req, res) {
-    var staffmem = getByValue(staff,req.params.id);
+    var staffmem = getByValue(staff, req.params.id);
     var index = staff.indexOf(staffmem);
 
     var currentSize = staff.length;
     staff.splice(index, 1);
 
-    if((currentSize - 1) == staff.length)
-        res.json({ message: 'Staff member deleted!'});
+    if ((currentSize - 1) == staff.length)
+        res.json({message: 'Staff member deleted!'});
     else
-        res.json({ message: 'Staff member not deleted!'});
+        res.json({message: 'Staff member not deleted!'});
+};
 
+
+
+router.newStaff=function(req, res){
     var id = Math.floor((Math.random() * 101) + 1);
     var name = 'brian';
     var wage = 12;
     var role = 'Waiter';
-    var daysabsent= 0;
     var currentSize = staff.length;
 
-    staff.push({"id": id, "name": name, "wage": wage, "role": role, "daysabsent":daysabsent});
+    staff.push({"id": id, "name": name, "wage": wage, "role": role});
 
     if ((currentSize + 1) == staff.length)
         res.json({ message: 'Staff member added'});
@@ -73,6 +76,7 @@ router.deleteStaff= function(req, res) {
 
 
 }
+
 
 router.addDaysabsent = function(req, res) {
 
