@@ -63,7 +63,14 @@ router.deleteStaff= function(req, res) {
         res.json({message: 'Staff member deleted!'});
     else
         res.json({message: 'Staff member not deleted!'});
+
 }
+
+};
+
+
+
+
 router.newStaff=function(req, res){
     var id = Math.floor((Math.random() * 101) + 1);
     var name = 'brian';
@@ -85,4 +92,17 @@ router.newStaff=function(req, res){
 }
 
 
+<<<<<<< HEAD
+=======
+router.addDaysabsent = function(req, res) {
+
+    var staffmem = getByValue(staff,req.params.id);
+    staffmem.daysabsent += 1;
+    /*staff.forEach(staffmem == staff.id)
+    {
+        staff.wage == req.body.wage;
+        staff.role == req.body.role;
+    }*/
+}
+>>>>>>> update-function
 module.exports = router;
