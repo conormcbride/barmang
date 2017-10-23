@@ -66,7 +66,7 @@ router.deleteStaff= function(req, res) {
 
 }
 
-}
+
 
 
 
