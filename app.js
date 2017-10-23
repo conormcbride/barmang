@@ -26,7 +26,7 @@ app.use('/', index);
 app.use('/users', users);
 
 app.use('/stafflist', staffroutes.findAll);
-app.post('/addstaff', staffroutes.newStaff());
+app.post('/addstaff/', staffroutes.newStaff());
 
 
 // catch 404 and forward to error handler
