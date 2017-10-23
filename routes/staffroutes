@@ -8,7 +8,7 @@ router.findAll = function(req, res) {
 };
 
 //staffarray.push({id: id, name: name, wage: wage, role: role});
-router.newStaff = function(req, res) {
+router.newStaff = function(req,res) {
 
     var id = Math.floor((Math.random() * 101) + 1);
     var name = 'brian';
@@ -23,7 +23,7 @@ router.newStaff = function(req, res) {
 
 
     else
-        res.json({ message: 'Nothing added'});
+        res.json( { message: 'Nothing added'});
 
 
 }

@@ -25,8 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 
-app.use('/stafflist', staffroutes.findAll);
-app.post('/addstaff/', staffroutes.newStaff());
+app.get('/staff', staffroutes.findAll);
+app.post('/staff', staffroutes.newStaff);
 
 
 // catch 404 and forward to error handler
