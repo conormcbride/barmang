@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.findAll = function(req, res) {
     // Return a JSON representation of our list
-    res.json(staff);
+    res.json(staffarray);
 }
 
 router.search = function(req, res) {
@@ -19,7 +19,7 @@ router.search = function(req, res) {
     }
 
 }
-staffarray.push({id: id, name: name, wage: wage, role: role});
+//staffarray.push({id: id, name: name, wage: wage, role: role});
 router.newStaff = function(req, res) {
     var staff = staffarray;
     var id = Math.floor((Math.random() * 101) + 1);
