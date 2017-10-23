@@ -5,32 +5,20 @@ var router = express.Router();
 router.findAll = function(req, res) {
     // Return a JSON representation of our list
     res.json(staffarray);
-}
+};
 
-router.search = function(req, res) {
-
-    staff = getByValue(staff, req.params.id);
-
-    if(staff!=null){
-        res.json(staff);
-    }else{
-
-        res.json({message:'Staff member not recognised'});
-    }
-
-}
 //staffarray.push({id: id, name: name, wage: wage, role: role});
 router.newStaff = function(req, res) {
-    var staff = staffarray;
+   // var staff = staffarray;
     var id = Math.floor((Math.random() * 101) + 1);
     var name = "brian";
     var wage = 12;
     var role = "Waiter";
-    var currentSize = staff.length;
+    var currentSize = staffarray.length;
 
-    staff.push({id: id, name: name, wage: wage, role: role});
+    staffarray.push({"id": id, "name": name, "wage": wage, "role": role});
 
-    if ((currentSize + 1) != staff.length) {
+    if ((currentSize + 1) != staffarray.length) {
         res.json({message: 'Staff member added'});
     }
 
@@ -38,6 +26,6 @@ router.newStaff = function(req, res) {
         res.json({message: 'nobody added!'});
     }
 
-}
+};
 
 module.exports = router;
