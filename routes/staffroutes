@@ -58,9 +58,10 @@ router.deleteStaff= function(req, res) {
     var name = 'brian';
     var wage = 12;
     var role = 'Waiter';
+    var daysabsent= 0;
     var currentSize = staff.length;
 
-    staff.push({"id": id, "name": name, "wage": wage, "role": role});
+    staff.push({"id": id, "name": name, "wage": wage, "role": role, "daysabsent":daysabsent});
 
     if ((currentSize + 1) == staff.length)
         res.json({ message: 'Staff member added'});
@@ -71,5 +72,16 @@ router.deleteStaff= function(req, res) {
 
 
 
+}
+
+router.addDaysabsent = function(req, res) {
+
+    var staffmem = getByValue(staff,req.params.id);
+    staffmem.daysabsent += 1;
+    /*staff.forEach(staffmem == staff.id)
+    {
+        staff.wage == req.body.wage;
+        staff.role == req.body.role;
+    }*/
 }
 module.exports = router;

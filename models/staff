@@ -1,7 +1,7 @@
 var staff = [
-                 {id: 101, name: 'Conor McBride', wage: 10, role: 'bar'},
-                 {id: 102, name: 'Barry Allan', wage: 20, role: 'waiter'},
-                 {id: 103, name: 'Rob Power', wage: 30, role: 'kitchen'}
+                 {id: 101, name: 'Conor McBride', wage: 10, role: 'bar', daysabsent:0},
+                 {id: 102, name: 'Barry Allan', wage: 20, role: 'waiter', daysabsent:0},
+                 {id: 103, name: 'Rob Power', wage: 30, role: 'kitchen', daysabsent:0}
                 ];
 
 module.exports = staff;
