@@ -73,9 +73,6 @@ router.deleteStaff= function(req, res) {
 
 router.newStaff=function(req, res){
     var id = Math.floor((Math.random() * 101) + 1);
-    // var name = 'brian';
-    // var wage = 12;
-    // var role = 'Waiter';
      var currentSize = staff.length;
 
     staff.push({"id": id, "name": req.body.name, "wage": req.body.wage, "role": req.body.role, daysabsent:0});
@@ -97,11 +94,13 @@ router.addDaysabsent = function(req, res) {
 
     var staffmem = getByValue(staff,req.params.id);
     staffmem.daysabsent += 1;
-    /*staff.forEach(staffmem == staff.id)
-    {
-        staff.wage == req.body.wage;
-        staff.role == req.body.role;
-    }*/
+    if(staffmem.daysabsent>=5){
+
+        res.json( {message: 'Speak to staff member about absenteeism '})
+    }else{
+        res.json( {message: 'absence noted'})
+    }
+
 }
 
 module.exports = router;
