@@ -12,7 +12,7 @@ A rolling number of days missed or absent should also be available and updateabl
 to show without prior notice.
 
 
-
+STAFF
 app.delete('/staff/:id', staffroutes.deleteStaff);
 This gets the id entered and finds the staff member associated and deletes it.
 /staff/59ff64473a6a8891c13bb4a5
@@ -40,6 +40,29 @@ app.put('/staff/:id', staffroutes.incrementDaysAbscent);
 This takes in the staff id and increments the days absent. If a staff member has 5 or more absences the system tells the
 manager to talk to them about it.
 /staff/59ff64473a6a8891c13bb4a5
+
+BAR
+app.delete('/bar/:id', barroutes.deleteBar);
+This gets the id entered and finds the bar associated and deletes it.
+/bar/59ff8ce67c2ea71884261f16
+
+app.get('/bar/:id', barroutes.findOne);
+This gets the id entered and finds the bar associated then prints it.
+/bar/59ff8ce67c2ea71884261f16
+
+app.get('/bar', barroutes.findAll);
+This prints all staff members.
+/bar
+
+app.post('/bar', barroutes.newBar);
+This takes the information entered and creates a new bar.
+/bar
+request = {"barName": "oneills", "location":"waterford" "earnings":7000};
+
+app.post('/bar/:id', barroutes.updateBarEarnings);
+This takes in the id entered and the request to update the staff earning.
+/bar/59ff8ce67c2ea71884261f16
+request = { "earnings":7000}
 
 All of the routes either took from or updated to the mongo database staffs, which contains a collection called staffs.
 
