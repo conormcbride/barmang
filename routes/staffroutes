@@ -6,11 +6,6 @@ mongoose.connect('mongodb://localhost:27017/staffs');
 
 var db = mongoose.connection;
 
-/*router.findAll = function(req, res) {
-
-    res.json(staff);
-};
-*/
 router.findAll = function(req, res) {
 
     Staff.find(function(err, bars) {
@@ -22,7 +17,6 @@ router.findAll = function(req, res) {
 }
 router.findOne = function(req, res) {
 
-    // Use the Donation model to find a single donation
     Staff.find({ "_id" : req.params.id },function(err, Staff) {
         if (err)
             res.json({ message: 'Staff Member NOT Found!', errmsg : err } );
@@ -51,69 +45,28 @@ router.newStaff = function(req, res) {
     });
 }
 
-//staffarray.push({id: id, name: name, wage: wage, role: role});
+router.deleteStaff = function(req, res) {
 
-/*router.newStaff = function(req,res) {
-
-
-    var singlestaff = getByValue(staff, req.params.id);
-    //staffid= req.params.id;
-        }
-        else{
-            res.json({message:'Staff ID not recognised'});
-        }
-
-    })
-    if(singlestaff != null){
-        res.json(singlestaff);
-    }else{
-
-        res.json({message:'Staff ID not recognised'});
-    }
-    //res.json(singlestaff);
-
-}*/
-
-
-function getByValue(arr, id) {
-
-    var result;
-    result = arr.filter(function (o) {
-        return o.id == id;
+    Staff.findByIdAndRemove(req.params.id, function(err) {
+        if (err)
+            res.send(err);
+        else
+            res.json({ message: 'Donation Deleted!'});
     });
-
-    return result ? result[0] : null; // or undefined
 }
-
-router.deleteStaff= function(req, res) {
-    var staffmem = getByValue(Staff, req.params.id);
-    var index = Staff.indexOf(staffmem);
-
-    var currentSize = Staff.length;
-    Staff.splice(index, 1);
-
-    if ((currentSize - 1) == Staff.length)
-        res.json({message: 'Staff member deleted!'});
-    else
-        res.json({message: 'Staff member not deleted!'});
-
-}
-
-router.addDaysabsent = function(req, res) {
-
-    var staffmem = getByValue(Staff,req.params.id);
-    staffmem.daysabsent += 1;
-    if(staffmem.daysabsent>=5){
-
-        res.json( {message: 'Speak to staff member about absenteeism '})
-    }else{
-        res.json( {message: 'absence noted'})
-    }
-
-}
-
-
-
+//
+// router.addDaysabsent = function(req, res) {
+//
+//     var staffmem = getByValue(Staff,req.params.id);
+//     staffmem.daysabsent += 1;
+//     if(staffmem.daysabsent>=5){
+//
+//         res.json( {message: 'Speak to staff member about absenteeism '})
+//     }else{
+//         res.json( {message: 'absence noted'})
+//     }
+//
+// }
 
 
 db.on('error', function (err) {
