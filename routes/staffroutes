@@ -1,20 +1,36 @@
 var staff = require('../models/staff');
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/staffs');
 
-router.findAll = function(req, res) {
+var db = mongoose.connection;
+
+/*router.findAll = function(req, res) {
 
     res.json(staff);
 };
+*/
+router.findAll = function(req, res) {
+
+    staff.find(function(err, bars) {
+        if (err)
+            res.send(err);
+
+        res.json(bars);
+    });
+}
 router.findOne = function(req, res) {
 
-    var singlestaff = getByValue(staff,req.params.id);
-
-    if(singlestaff != null)
-        res.json(singlestaff);
-    else
-        res.json({ message: 'Staff member not Found!'});
+    // Use the Donation model to find a single donation
+    staff.find({ "_id" : req.params.id },function(err, staff) {
+        if (err)
+            res.json({ message: 'Staff Member NOT Found!', errmsg : err } );
+        else
+            res.json(staff);
+    });
 }
+
 //staffarray.push({id: id, name: name, wage: wage, role: role});
 
 /*router.newStaff = function(req,res) {
@@ -102,13 +118,10 @@ router.addDaysabsent = function(req, res) {
     }
 
 }
-var mongoose = require('mongoose');
 
 
 
-mongoose.connect('mongodb://localhost:27017/bardb');
 
-var db = mongoose.connection;
 
 db.on('error', function (err) {
     console.log('connection error', err);
