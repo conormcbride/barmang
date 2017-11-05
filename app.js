@@ -33,7 +33,8 @@ app.get('/staff/:id', staffroutes.findOne);
 
 app.get('/staff', staffroutes.findAll);
 app.post('/staff', staffroutes.newStaff);
-app.put('/staff/:id', staffroutes.addDaysabsent);
+app.post('/staff/:id', staffroutes.updateRateOfPay)
+app.put('/staff/:id', staffroutes.incrementDaysAbscent);
 
 
 
