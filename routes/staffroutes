@@ -1,4 +1,4 @@
-var staff = require('../models/staff');
+var Staff = require('../models/staff');
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
@@ -13,7 +13,7 @@ var db = mongoose.connection;
 */
 router.findAll = function(req, res) {
 
-    staff.find(function(err, bars) {
+    Staff.find(function(err, bars) {
         if (err)
             res.send(err);
 
@@ -23,11 +23,31 @@ router.findAll = function(req, res) {
 router.findOne = function(req, res) {
 
     // Use the Donation model to find a single donation
-    staff.find({ "_id" : req.params.id },function(err, staff) {
+    Staff.find({ "_id" : req.params.id },function(err, Staff) {
         if (err)
             res.json({ message: 'Staff Member NOT Found!', errmsg : err } );
         else
-            res.json(staff);
+            res.json(Staff);
+    });
+}
+
+router.newStaff = function(req, res) {
+
+    var staff = new Staff();
+
+    staff.name = req.body.name;
+    staff.wage = req.body.wage;
+    staff.role = req.body.role;
+    staff.daysabsent = req.body.daysabsent;
+
+    console.log('Adding donation: ' + JSON.stringify(Staff));
+
+    // Save the donation and check for errors
+    staff.save(function(err) {
+        if (err)
+            res.send(err);
+
+        res.json({ message: 'Staff Member Added!', data: Staff });
     });
 }
 
@@ -38,9 +58,6 @@ router.findOne = function(req, res) {
 
     var singlestaff = getByValue(staff, req.params.id);
     //staffid= req.params.id;
-    /*forEach(function (staff){
-        if(staffid == id){
-            res.json(staffid);
         }
         else{
             res.json({message:'Staff ID not recognised'});
@@ -69,46 +86,22 @@ function getByValue(arr, id) {
 }
 
 router.deleteStaff= function(req, res) {
-    var staffmem = getByValue(staff, req.params.id);
-    var index = staff.indexOf(staffmem);
+    var staffmem = getByValue(Staff, req.params.id);
+    var index = Staff.indexOf(staffmem);
 
-    var currentSize = staff.length;
-    staff.splice(index, 1);
+    var currentSize = Staff.length;
+    Staff.splice(index, 1);
 
-    if ((currentSize - 1) == staff.length)
+    if ((currentSize - 1) == Staff.length)
         res.json({message: 'Staff member deleted!'});
     else
         res.json({message: 'Staff member not deleted!'});
 
 }
 
-
-
-
-
-
-router.newStaff=function(req, res){
-    var id = Math.floor((Math.random() * 101) + 1);
-     var currentSize = staff.length;
-
-    staff.push({"id": id, "name": req.body.name, "wage": req.body.wage, "role": req.body.role, daysabsent:0});
-
-    if ((currentSize + 1) == staff.length)
-        res.json({ message: 'Staff member added'});
-
-
-    else
-        res.json( { message: 'Nothing added'});
-
-
-
-}
-
-
-
 router.addDaysabsent = function(req, res) {
 
-    var staffmem = getByValue(staff,req.params.id);
+    var staffmem = getByValue(Staff,req.params.id);
     staffmem.daysabsent += 1;
     if(staffmem.daysabsent>=5){
 
