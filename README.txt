@@ -67,5 +67,10 @@ request = { "earnings":7000}
 All of the routes either took from or updated to the mongo database staffs, which contains a collection called staffs.
 
 I have been running a git repo since the start of the project and have had multiple branches and merges.
+https://github.com/conormcbride/barmang
+
+References:
+•Drohan, D. Lab 2 - DonationWeb 1.0 (Express & Node App).
+Available at: https://ddrohan.github.io/wit-wad/topic02-node/book-b-lab02/index.html
 
 
