@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var staffroutes = require('./routes/staffroutes');
+var barroutes = require('./routes/barroutes')
 var app = express();
 
 // view engine setup
@@ -36,6 +37,11 @@ app.post('/staff', staffroutes.newStaff);
 app.post('/staff/:id', staffroutes.updateRateOfPay)
 app.put('/staff/:id', staffroutes.incrementDaysAbscent);
 
+app.delete('/bar/:id', barroutes.deleteBar);
+app.get('/bar/:id', barroutes.findOne);
+app.get('/bar', barroutes.findAll);
+app.post('/bar', barroutes.newBar);
+app.post('/bar/:id', barroutes.updateBarEarnings)
 
 
 
