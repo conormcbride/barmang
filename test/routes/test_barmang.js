@@ -63,4 +63,16 @@ describe('Staff', function (){
                 });
         });
     });
+    describe('DELETE /staff', function () {
+        it('should return confirmation message and delete staff member', function(done) {
+
+            chai.request(server)
+                .delete('/staff/59ff64473a6a8891c13bb4a5')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('Staff member Deleted!' ) ;
+                    done();
+                });
+        });
+    });
 });
