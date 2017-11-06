@@ -31,4 +31,36 @@ describe('Staff', function (){
                 });
         });
     });
+    describe('POST /staff', function () {
+        it('should return confirmation message and update collection', function(done) {
+            var staff = {
+                name: 'Brian Mcbride',
+                wage: 10,
+                role: 'waiter'
+            };
+            chai.request(server)
+                .post('/staff')
+                .send(staff)
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('Staff Member Added!' ) ;
+                    done();
+                });
+        });
+    });
+   describe('POST /staff', function () {
+        it('should return confirmation message and update staff members wages', function(done) {
+            var staff = {
+                wage: 10
+            };
+            chai.request(server)
+                .post('/staff/59ff64473a6a8891c13bb4a5')
+                .send(staff)
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('Staff member Conor McBride rate of pay has been updated!' ) ;
+                    done();
+                });
+        });
+    });
 });
