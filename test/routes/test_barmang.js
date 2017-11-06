@@ -14,7 +14,7 @@ describe('Staff', function (){
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
-                    expect(res.body.length).to.equal(3);
+                    expect(res.body.length).to.equal(40);
                     done();
                 });
         });
@@ -22,7 +22,7 @@ describe('Staff', function (){
     describe('GET /staff/id', function () {
         it('should return a single staff member from the collection', function(done) {
             chai.request(server)
-                .get('/staff/59ff64473a6a8891c13bb4a5')
+                .get('/staff/59ff645b3a6a8891c13bb4a6')
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
@@ -54,11 +54,11 @@ describe('Staff', function (){
                 wage: 10
             };
             chai.request(server)
-                .post('/staff/59ff64473a6a8891c13bb4a5')
+                .post('/staff/59ff645b3a6a8891c13bb4a6')
                 .send(staff)
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
-                    expect(res.body).to.have.property('message').equal('Staff member Conor McBride rate of pay has been updated!' ) ;
+                    expect(res.body).to.have.property('message').equal('Staff member brian rate of pay has been updated!' ) ;
                     done();
                 });
         });
@@ -67,12 +67,25 @@ describe('Staff', function (){
         it('should return confirmation message and delete staff member', function(done) {
 
             chai.request(server)
-                .delete('/staff/59ff64473a6a8891c13bb4a5')
+                .delete('/staff/5a00df199f13f21e1cbd559b')
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.have.property('message').equal('Staff member Deleted!' ) ;
                     done();
                 });
         });
+    });
+    describe('PUT /staff/:id', function () {
+        it('should change the absent days by one and print message', function(done) {
+            chai.request(server)
+                .put('/staff/59ff645b3a6a8891c13bb4a6')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('Days Absent updated' ) ;
+                    done();
+                });
+        });
+
+
     });
 });
