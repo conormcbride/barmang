@@ -34,14 +34,14 @@ app.get('/staff/:id', staffroutes.findOne);
 
 app.get('/staff', staffroutes.findAll);
 app.post('/staff', staffroutes.newStaff);
-app.post('/staff/:id', staffroutes.updateRateOfPay)
+app.post('/staff/:id', staffroutes.updateRateOfPay);
 app.put('/staff/:id', staffroutes.incrementDaysAbscent);
 
 app.delete('/bar/:id', barroutes.deleteBar);
 app.get('/bar/:id', barroutes.findOne);
 app.get('/bar', barroutes.findAll);
 app.post('/bar', barroutes.newBar);
-app.post('/bar/:id', barroutes.updateBarEarnings)
+app.post('/bar/:id', barroutes.updateBarEarnings);
 
 
 
