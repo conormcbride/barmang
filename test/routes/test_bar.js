@@ -14,7 +14,7 @@ describe('Staff', function (){
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
-                    expect(res.body.length).to.equal(1);
+                    expect(res.body.length).to.equal(17);
                     done();
                 });
         });
@@ -27,6 +27,23 @@ describe('Staff', function (){
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
                     expect(res.body.length).to.equal(1);
+                    done();
+                });
+        });
+    });
+    describe('POST /Bar', function () {
+        it('should return confirmation message and update collection', function(done) {
+            var bar = {
+                barName: 'McBrides',
+                location: 'waterford',
+                earnings: 100000
+            };
+            chai.request(server)
+                .post('/bar')
+                .send(bar)
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('Bar  Added!' ) ;
                     done();
                 });
         });
