@@ -14,7 +14,7 @@ describe('Staff', function (){
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
-                    expect(res.body.length).to.equal(19);
+                    expect(res.body.length).to.equal(48);
                     done();
                 });
         });
@@ -52,10 +52,25 @@ describe('Staff', function (){
         it('should return confirmation message and delete staff member', function(done) {
 
             chai.request(server)
-                .delete('/bar/5a017b6ac2a72f29585e833d')
+                .delete('/bar/5a0182a0478d141c84db73d6')
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.have.property('message').equal('Bar Deleted!' ) ;
+                    done();
+                });
+        });
+    });
+    describe('POST /bar/id', function () {
+        it('should return confirmation message and update bar earnings', function(done) {
+            var earnings = {
+                earnings: 50000
+            };
+            chai.request(server)
+                .post('/bar/59ff8ce67c2ea71884261f16')
+                .send(earnings)
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('Bar Wander Inn earnings have been updated!' ) ;
                     done();
                 });
         });
