@@ -2,11 +2,59 @@ var chai = require('chai');
 var chaiHttp = require('chai-http');
 var server = require('../../bin/www');
 var expect = chai.expect;
-
+var Bar = require('../../models/bar');
 chai.use(chaiHttp);
 var _ = require('lodash' );
 
-describe('Staff', function (){
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/staffs');
+var db = mongoose.connection;
+
+db.on('error', function (err) {
+    console.log('connection error', err);
+});
+db.once('open', function () {
+    console.log('connected to database');
+});
+
+describe('Bar', function (){
+    beforeEach(function (done) {
+
+        Bar.remove({}, function (err) {
+
+            if (err)
+                done(err);
+            else {
+                var bar1 = new Bar();
+
+                bar1._id = "59f6f0b99bd9dc7f544d7dac";
+                bar1.barName ='bradys'
+                bar1.location = "waterford";
+                bar1.earnings = 10000000;
+
+                bar1.save(function (err) {
+                    if (err)
+                        console.log(err);
+                    else {
+                        var bar2 = new Bar();
+
+                        bar2._id = "5a00e4020bdef11a9cd6720f";
+                        bar2.barName ='martins';
+                        bar2.location = "waterford";
+                        bar2.earnings = 50000;
+
+                        bar2.save(function (err) {
+                            if (err)
+                                console.log(err);
+                            else {
+                                done();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    });
     describe('GET /bar', function () {
         it('should return all the bars in the collection', function(done) {
             chai.request(server)
@@ -14,15 +62,15 @@ describe('Staff', function (){
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
-                    expect(res.body.length).to.equal(48);
+                    expect(res.body.length).to.equal(2);
                     done();
                 });
         });
     });
-    describe('GET /staff/id', function () {
+    describe('GET /bar/id', function () {
         it('should return a single staff member from the collection', function(done) {
             chai.request(server)
-                .get('/bar/59ff8ce67c2ea71884261f16')
+                .get('/bar/5a00e4020bdef11a9cd6720f')
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
@@ -52,7 +100,7 @@ describe('Staff', function (){
         it('should return confirmation message and delete staff member', function(done) {
 
             chai.request(server)
-                .delete('/bar/5a0182a0478d141c84db73d5')
+                .delete('/bar/59f6f0b99bd9dc7f544d7dac')
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.have.property('message').equal('Bar Deleted!' ) ;
@@ -66,11 +114,11 @@ describe('Staff', function (){
                 earnings: 50000
             };
             chai.request(server)
-                .post('/bar/59ff8ce67c2ea71884261f16')
+                .post('/bar/5a00e4020bdef11a9cd6720f')
                 .send(earnings)
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
-                    expect(res.body).to.have.property('message').equal('Bar Wander Inn earnings have been updated!' ) ;
+                    expect(res.body).to.have.property('message').equal('Bar martins earnings have been updated!' ) ;
                     done();
                 });
         });
