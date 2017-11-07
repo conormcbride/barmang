@@ -52,7 +52,7 @@ describe('Staff', function (){
         it('should return confirmation message and delete staff member', function(done) {
 
             chai.request(server)
-                .delete('/bar/5a0182a0478d141c84db73d6')
+                .delete('/bar/5a0182a0478d141c84db73d5')
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.have.property('message').equal('Bar Deleted!' ) ;
