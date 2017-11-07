@@ -7,5 +7,28 @@ chai.use(chaiHttp);
 var _ = require('lodash' );
 
 describe('Staff', function (){
-
+    describe('GET /bar', function () {
+        it('should return all the bars in the collection', function(done) {
+            chai.request(server)
+                .get('/bar')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(1);
+                    done();
+                });
+        });
+    });
+    describe('GET /staff/id', function () {
+        it('should return a single staff member from the collection', function(done) {
+            chai.request(server)
+                .get('/bar/59ff8ce67c2ea71884261f16')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(1);
+                    done();
+                });
+        });
+    });
 });
