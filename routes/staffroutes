@@ -34,9 +34,9 @@ router.newStaff = function(req, res) {
     staff.role = req.body.role;
     staff.daysabsent = req.body.daysabsent;
 
-    console.log('Adding donation: ' + JSON.stringify(Staff));
+    console.log('Adding staff member: ' + JSON.stringify(Staff));
 
-    // Save the donation and check for errors
+
     staff.save(function(err) {
         if (err)
             res.send(err);

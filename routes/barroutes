@@ -30,9 +30,9 @@ router.newBar = function(req, res) {
     bar.location = req.body.location;
     bar.earnings = req.body.earnings;
 
-    console.log('Adding donation: ' + JSON.stringify(Bar));
+    console.log('Adding bar: ' + JSON.stringify(Bar));
 
-    // Save the donation and check for errors
+
     bar.save(function(err) {
         if (err)
             res.send(err);

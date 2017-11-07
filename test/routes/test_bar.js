@@ -14,7 +14,7 @@ describe('Staff', function (){
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
-                    expect(res.body.length).to.equal(17);
+                    expect(res.body.length).to.equal(19);
                     done();
                 });
         });
@@ -44,6 +44,18 @@ describe('Staff', function (){
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.have.property('message').equal('Bar  Added!' ) ;
+                    done();
+                });
+        });
+    });
+    describe('DELETE /bar', function () {
+        it('should return confirmation message and delete staff member', function(done) {
+
+            chai.request(server)
+                .delete('/bar/5a017b6ac2a72f29585e833d')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('Bar Deleted!' ) ;
                     done();
                 });
         });
