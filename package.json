@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha --timeout 10000 test/routes/*"
+    "test": "cross-env NODE_ENV=test PORT=4000 mocha test/routes/*"
 
   },
   "dependencies": {
