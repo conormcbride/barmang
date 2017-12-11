@@ -1,4 +1,4 @@
-var app = angular.module('DonationWebApp', ['ngRoute']);
+var app = angular.module('BarManager', ['ngRoute']);
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -9,25 +9,25 @@ app.config(function($routeProvider) {
             controller  : 'mainController'
         })
         // route for the about page
-        .when('/about', {
-            templateUrl : 'pages/about.ejs',
-            controller  : 'aboutController'
+        .when('/barlist', {
+            templateUrl : 'pages/barlist.ejs',
+            controller  : 'barlistController'
         })
         // route for the about page
-        .when('/contact', {
-            templateUrl : 'pages/contact.ejs',
-            controller  : 'contactController'
+        .when('/stafflist', {
+            templateUrl : 'pages/stafflist.ejs',
+            controller  : 'stafflistController'
         })
 
         // route for the donate page
-        .when('/donate', {
-            templateUrl : 'pages/donate.ejs',
-            controller  : 'donateController'
+        .when('/addbar', {
+            templateUrl : 'pages/addbar.ejs',
+            controller  : 'addbarController'
         })
 
         // route for the donations page
-        .when('/donations', {
-            templateUrl : 'pages/donations.ejs',
-            controller  : 'donationsController'
+        .when('/addstaff', {
+            templateUrl : 'pages/addstaff.ejs',
+            controller  : 'addstaffController'
         });
 });
