@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "cross-env NODE_ENV=test PORT=4000 mocha test/routes/*"
+    "test": "SET cross-env NODE_ENV=test  PORT=4000 mocha test/routes/*"
+
 
   },
   "dependencies": {
