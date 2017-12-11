@@ -2,6 +2,9 @@
   "name": "barmang",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "test": "SET cross-env NODE_ENV=test PORT=4000 && mocha test/routes/*"
+  },
 
   "dependencies": {
     "body-parser": "~1.17.1",
