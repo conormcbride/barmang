@@ -1,4 +1,9 @@
+
+require('angular');
+require('angular-route');
 var app = angular.module('BarManager', ['ngRoute']);
+require('./controllers/index');
+
 
 app.config(function($routeProvider) {
     $routeProvider

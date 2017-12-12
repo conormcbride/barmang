@@ -50,3 +50,4 @@ app.controller('barlistController', ['$scope', '$http', function($scope, $http) 
         });
     }
 }]);
+module.exports = barlistcontroller;

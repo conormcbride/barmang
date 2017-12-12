@@ -21,3 +21,4 @@ app.controller('addbarController', ['$scope', '$location', '$http', function($sc
     // }
 
 }]);
+module.exports = addbarController;

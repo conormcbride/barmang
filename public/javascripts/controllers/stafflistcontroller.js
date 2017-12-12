@@ -50,3 +50,4 @@ app.controller('stafflistController', ['$scope', '$http', function($scope, $http
         });
     }
 }]);
+module.exports = stafflistcontroller;

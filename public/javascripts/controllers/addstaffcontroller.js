@@ -17,3 +17,5 @@ app.controller('addstaffController', ['$scope', '$location', '$http', function($
 
 
 }]);
+
+module.exports = addstaffController;
