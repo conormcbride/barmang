@@ -24,10 +24,10 @@
                 <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>
 
 
-                <button type="button" class="btn btn-default" ng-click="delete(donation._id)">
+                <button type="button" class="btn btn-default" ng-click="delete(bar._id)">
                     <span class="glyphicon glyphicon-remove"></span> Remove
                 </button>
-                <button type="button" class="btn btn-default" ng-click="update(donation)">
+                <button type="button" class="btn btn-default" ng-click="update(bar)">
                     <span class="glyphicon glyphicon-edit"></span> Edit
                 </button>
                 </span>
@@ -35,5 +35,15 @@
             </tr>
             </tbody>
         </table>
+        <tr>
+            <td>
+                <input type="number" id="earnings" ng-model="current.earnings" value="{{current.earnings}}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button ng-click="save(current._id)">Save</button>
+            </td>
+        </tr>
     </div>
 </div>
