@@ -1,9 +1,11 @@
 language: node_js
 node_js:
   - stable
+script:
+ - npm run coverage
 branches:
-  only:
-  - workingbranch
+ only:
+ - workingbranch
 notifications:
   email:
     recipients:
