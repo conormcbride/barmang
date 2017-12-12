@@ -79,7 +79,7 @@ describe('Bar', function (){
                 });
         });
     });
-   /* describe('POST /Bar', function () {
+   describe('POST /Bar', function () {
         it('should return confirmation message and update collection', function(done) {
             var bar = {
                 barName: 'McBrides',
@@ -95,7 +95,7 @@ describe('Bar', function (){
                     done();
                 });
         });
-    });*/
+    });
     describe('DELETE /bar', function () {
         it('should return confirmation message and delete staff member', function(done) {
 
@@ -108,19 +108,19 @@ describe('Bar', function (){
                 });
         });
     });
-    // describe('POST /bar/id', function () {
-    //     it('should return confirmation message and update bar earnings', function(done) {
-    //         var earnings = {
-    //             earnings: 50000
-    //         };
-    //         chai.request(server)
-    //             .post('/bar/5a00e4020bdef11a9cd6720f')
-    //             .send(earnings)
-    //             .end(function(err, res) {
-    //                 expect(res).to.have.status(200);
-    //                 expect(res.body).to.have.property('message').equal('Bar martins earnings have been updated!' ) ;
-    //                 done();
-    //             });
-    //     });
-    // });
+    describe('POST /bar/id', function () {
+        it('should return confirmation message and update bar earnings', function(done) {
+            var earnings = {
+                earnings: 50000
+            };
+            chai.request(server)
+                .post('/bar/5a00e4020bdef11a9cd6720f')
+                .send(earnings)
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('Bar martins earnings have been updated!' ) ;
+                    done();
+                });
+        });
+    });
 });

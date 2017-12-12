@@ -1,5 +1,7 @@
+var prod =  process.env.NODE_ENV === 'prod';
 var express = require('express');
 var path = require('path');
+
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -21,7 +23,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'build')));     // CHANGED
+if (prod) {
+    app.use(express.static(path.join(__dirname, 'dist')));
+} else {
+    app.use(express.static(path.join(__dirname, 'build')));
+}    // CHANGED
 app.use("/public", express.static(__dirname + "/public"));  // NEW
 
 app.use('/', index);
