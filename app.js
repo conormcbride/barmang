@@ -40,7 +40,7 @@ app.put('/staff/:id', staffroutes.incrementDaysAbscent);
 app.delete('/bar/:id', barroutes.deleteBar);
 app.get('/bar/:id', barroutes.findOne);
 app.get('/bar', barroutes.findAll);
-app.post('/bar', barroutes.newBar);
+app.post('/bar', barroutes.addBar);
 app.post('/bar/:id', barroutes.updateBarEarnings);
 
 

@@ -22,7 +22,7 @@ router.findOne = function(req, res) {
     });
 }
 
-router.newBar = function(req, res) {
+router.addBar = function(req, res) {
 
     var bar = new Bar();
 
