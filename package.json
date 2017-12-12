@@ -8,6 +8,8 @@
     "build:prod": "webpack --config webpack-prod.config.js",
     "build:dev": "webpack",
     "clean-build:dev": "rimraf ./build && mkdir build",
+    "prebuild:dev": "npm-run-all test clean-build:dev",
+    "postbuild:dev": "npm run server",
     "test": "set NODE_ENV=test && mocha test/routes/*"
   },
   "dependencies": {
