@@ -1,4 +1,9 @@
+
+
+require('angular');
+require('angular-route');
 var app = angular.module('BarManager', ['ngRoute']);
+require('./controllers/index');
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -11,7 +16,7 @@ app.config(function($routeProvider) {
         // route for the about page
         .when('/barlist', {
             templateUrl : 'public/pages/barlist.ejs',
-            controller  : 'barlistController'
+            controller  : 'barlistcontroller'
         })
         // route for the about page
         .when('/stafflist', {
@@ -22,12 +27,12 @@ app.config(function($routeProvider) {
         // route for the donate page
         .when('/addbar', {
             templateUrl : 'public/pages/addbar.ejs',
-            controller  : 'addbarController'
+            controller  : 'addbarcontroller'
         })
 
         // route for the donations page
         .when('/addstaff', {
             templateUrl : 'public/pages/addstaff.ejs',
-            controller  : 'addstaffController'
+            controller  : 'addstaffcontroller'
         });
 });

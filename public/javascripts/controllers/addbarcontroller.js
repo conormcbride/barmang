@@ -1,6 +1,4 @@
-var app = angular.module('BarManager');
-
-app.controller('addbarController', ['$scope', '$location', '$http', function($scope, $location, $http) {
+addbarcontroller = function($scope,$location, $http) {
 
     $scope.message = ' Add Bar Page';
 
@@ -20,4 +18,5 @@ app.controller('addbarController', ['$scope', '$location', '$http', function($sc
     //
     // }
 
-}]);
+}
+module.exports = addbarcontroller;

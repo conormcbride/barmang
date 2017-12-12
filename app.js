@@ -33,6 +33,7 @@ app.delete('/staff/:id', staffroutes.deleteStaff);
 app.get('/staff/:id', staffroutes.findOne);
 
 app.get('/staff', staffroutes.findAll);
+// app.get('/staff', staffroutes.findAll);
 app.post('/staff', staffroutes.newStaff);
 app.put('/staff/:id/update', staffroutes.updateRateOfPay);
 app.put('/staff/:id', staffroutes.incrementDaysAbscent);
