@@ -1,6 +1,6 @@
-var app = angular.module('BarManager');
 
-app.controller('barlistController', ['$scope', '$http', function($scope, $http) {
+
+function barlistcontroller($scope, $location, $http) {
     // create a message to display in our view
     $scope.message = 'Bar List!';
 
@@ -49,5 +49,5 @@ app.controller('barlistController', ['$scope', '$http', function($scope, $http) 
             console.log('Error: ' + data);
         });
     }
-}]);
+}
 module.exports = barlistcontroller;

@@ -1,6 +1,6 @@
-var app = angular.module('BarManager');
 
-app.controller('addstaffController', ['$scope', '$location', '$http', function($scope, $location, $http) {
+
+function addstaffController($scope, $location, $http) {
 
     $scope.message = ' Add Staff Page';
 
@@ -16,6 +16,6 @@ app.controller('addstaffController', ['$scope', '$location', '$http', function($
     };
 
 
-}]);
+};
 
 module.exports = addstaffController;

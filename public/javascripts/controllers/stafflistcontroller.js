@@ -1,6 +1,6 @@
-var app = angular.module('BarManager');
 
-app.controller('stafflistController', ['$scope', '$http', function($scope, $http) {
+
+function stafflistcontroller($scope, $location, $http) {
     // create a message to display in our view
     $scope.message = 'Staff List!';
 
@@ -49,5 +49,5 @@ app.controller('stafflistController', ['$scope', '$http', function($scope, $http
             console.log('Error: ' + data);
         });
     }
-}]);
+}
 module.exports = stafflistcontroller;
