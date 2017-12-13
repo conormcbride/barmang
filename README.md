@@ -15,6 +15,7 @@ node v6.11.3
 git but you can only work out of the workingbranch because the master branch is broken
 I had to roll back my code and had to work from there as I couldn't fix the master including the merge.
 Travis working
+https://github.com/conormcbride/barmang/tree/workingbranch
 
 I wourked out of webstorm but I'm not sure if that is needed here
 
