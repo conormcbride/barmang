@@ -13,7 +13,7 @@
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- test/routes/",
 
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
-    "check-coverage": " istanbul check-coverage --statements 70 --branches 40 --functions 40 --lines 70",
+    "check-coverage": " set istanbul check-coverage --statements 70 --branches 40 --functions 40 --lines 70",
     "test": "set cross-env NODE_ENV=test PORT=4000 mocha test/routes/*"
   },
   "dependencies": {
