@@ -1,6 +1,10 @@
 
+<<<<<<< HEAD
 
 function barlistcontroller($scope, $location, $http) {
+=======
+ barlistcontroller = function($scope, $http){
+>>>>>>> workingbranch
     // create a message to display in our view
     $scope.message = 'Bar List!';
 
@@ -49,5 +53,9 @@ function barlistcontroller($scope, $location, $http) {
             console.log('Error: ' + data);
         });
     }
+<<<<<<< HEAD
 }
+=======
+};
+>>>>>>> workingbranch
 module.exports = barlistcontroller;

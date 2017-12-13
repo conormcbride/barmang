@@ -1,9 +1,17 @@
-body {
+body{
   padding: 50px;
+<<<<<<< HEAD
   font: 14px "Lucida  Grande", Helvetica, Arial, sans-serif;
+=======
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+>>>>>>> workingbranch
 }
 
 a {
   color: #00B7FF;
 }
+<<<<<<< HEAD
 .glyphicon-thumbs-up { cursor:pointer }
+=======
+.glyphicon-thumbs-up { cursor:pointer }
+>>>>>>> workingbranch

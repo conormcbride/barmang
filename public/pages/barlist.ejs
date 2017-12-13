@@ -1,9 +1,9 @@
-<div class="jumbotron text-center">
+<div class="jumbotron text-center" id="barlist">
     <h1>List All Bars</h1>
 
     <p>{{ message }}</p>
 
-    <div ng-controller="barlistController as list">
+    <div ng-controller="barlistcontroller as list">
         <table align="center" valign="middle">
             <tbody ng-repeat="bar in bars ">
             <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle"; >
@@ -15,7 +15,7 @@
                 <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>{{bar.location}}</span>
             </td>
 
-            <td>
+            <td name = "earnings">
                 <span class="glyphicon glyphicon-euro"></span>
                 {{bar.earnings}}
             </td>

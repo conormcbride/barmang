@@ -6,6 +6,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var prod =  process.env.NODE_ENV === 'prod';
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -27,8 +28,13 @@ if (prod) {
     app.use(express.static(path.join(__dirname, 'dist')));
 } else {
     app.use(express.static(path.join(__dirname, 'build')));
+
 }    // CHANGED
 app.use("/public", express.static(__dirname + "/public"));  // NEW
+
+}     // CHANGED
+app.use("/public", express.static(__dirname + "/public"));
+
 
 app.use('/', index);
 app.use('/users', users);
@@ -40,6 +46,7 @@ app.delete('/staff/:id', staffroutes.deleteStaff);
 app.get('/staff/:id', staffroutes.findOne);
 
 app.get('/staff', staffroutes.findAll);
+// app.get('/staff', staffroutes.findAll);
 app.post('/staff', staffroutes.newStaff);
 app.put('/staff/:id/update', staffroutes.updateRateOfPay);
 app.put('/staff/:id', staffroutes.incrementDaysAbscent);

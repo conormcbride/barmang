@@ -2,7 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     debug: true,
     devtool: 'source-map',
@@ -19,8 +18,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['build']),
         new HtmlWebpackPlugin({ inject: 'head',
-            template: __dirname + "/public/index.tmpl.html"}),
-        new ExtractTextPlugin("[name]-[hash].css")
+            template: __dirname + "/public/index.tmpl.html"})
     ],
     module: {
         loaders: [
@@ -30,7 +28,7 @@ module.exports = {
             ,
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', 'css')
+                loader: 'style!css?sourceMap'
             },
             {
                 test: /\.(svg|png|jpe?g|gif)(\?\S*)?$/,
@@ -42,4 +40,4 @@ module.exports = {
             }
         ]
     }
-};
+}

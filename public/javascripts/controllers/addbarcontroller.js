@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 
 
 function addbarController($scope, $location, $http) {
+=======
+addbarcontroller = function($scope,$location, $http) {
+>>>>>>> workingbranch
 
     $scope.message = ' Add Bar Page';
 
@@ -15,6 +19,11 @@ function addbarController($scope, $location, $http) {
             });
     };
 
+<<<<<<< HEAD
 
 };
 module.exports = addbarController;
+=======
+}
+module.exports = addbarcontroller;
+>>>>>>> workingbranch

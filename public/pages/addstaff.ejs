@@ -1,9 +1,9 @@
-<div class="jumbotron text-center">
-    <h1>Add Bar</h1>
+<div class="jumbotron text-center" id="addstaff">
+    <h1>Add Staff</h1>
 
     <p>{{ message }}</p>
 
-    <div ng-controller="addbarController">
+    <div ng-controller="addstaffcontroller">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
 
@@ -11,17 +11,17 @@
                 <form ng-submit="addStaff(newStaff)">
 
                     <div class="col-md-4" ><span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>Staff member name</div>
-                    <div class="col-md-8" ><input class="form-control" type="text" name="name" placeholder="Enter name of staff member" ng-model="newStaff.name" required = "true"></div>
+                    <div class="col-md-8" ><input class="form-control" id="name" type="text" name="name" placeholder="Enter name of staff member" ng-model="newStaff.name" required = "true"></div>
                     <br><br><br>
 
                     <div class="col-md-4" ><span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>Role of staff member</div>
-                    <div class="col-md-8" ><input class="form-control" type="text" name="role" placeholder="Enter the role of staff memebr" ng-model="newStaff.role" required = "true"></div>
+                    <div class="col-md-8" ><input class="form-control" id="role" type="text" name="role" placeholder="Enter the role of staff memebr" ng-model="newStaff.role" required = "true"></div>
                     <br><br><br>
 
                     <div class="col-md-4" ><span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>Wage of staff member per hour</div>
-                    <div class="col-md-8" ><input class="form-control"  type="number" name="wage"  placeholder="Please enter the wage of the staff member" ng-model="newStaff.wage" required = "true"></div>
+                    <div class="col-md-8" ><input class="form-control" id="wage" type="number" name="wage"  placeholder="Please enter the wage of the staff member" ng-model="newStaff.wage" required = "true"></div>
                     <br><br><br>
-                    <div class="col-md-2" ></div><div class="col-md-8" ><button class ="btn btn-primary" type = "submit">CREATE BAR</button></div>
+                    <div class="col-md-2" ></div><div class="col-md-8" ><button class ="btn btn-primary"  id="submit" type = "submit">CREATE BAR</button></div>
                 </form>
                 <br> <br>  <br>
 

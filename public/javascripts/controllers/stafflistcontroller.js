@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 
 
 function stafflistcontroller($scope, $location, $http) {
+=======
+stafflistController = function($scope, $http) {
+>>>>>>> workingbranch
     // create a message to display in our view
     $scope.message = 'Staff List!';
 
@@ -50,4 +54,8 @@ function stafflistcontroller($scope, $location, $http) {
         });
     }
 }
+<<<<<<< HEAD
 module.exports = stafflistcontroller;
+=======
+module.exports = stafflistController;
+>>>>>>> workingbranch
