@@ -3,9 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node server.js",
-    "dev": "npm-run-all -p run:mongotest ",
-    "run:mongo": "mongod",
+
     "server": "node bin/www",
     "build:prod": "webpack --config webpack-prod.config.js",
     "build:dev": "webpack",
