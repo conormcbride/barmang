@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-
+    "start": "npm-run-all",
     "server": "node bin/www",
     "build:prod": "webpack --config webpack-prod.config.js",
     "build:dev": "webpack",
