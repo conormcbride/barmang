@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npm-run-all test build:dev server",
+    "start": "test build:dev server",
+    "dev": "npm-run-all -p run:mongo",
+    "run:mongo": "mongod",
     "server": "node bin/www",
     "build:prod": "webpack --config webpack-prod.config.js",
     "build:dev": "webpack",
