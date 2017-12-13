@@ -101,13 +101,13 @@ describe('Staff', function (){
         });
     });
 
-   describe('POST /staff', function () {
+   describe('PUT /staff', function () {
         it('should return confirmation message and update staff members wages', function(done) {
             var staff = {
                 wage: 10
             };
             chai.request(server)
-                .post('/staff/5a01839c6ae69425c47e1faf')
+                .put('/staff/5a01839c6ae69425c47e1faf/update')
                 .send(staff)
                 .end(function(err, res) {
                     expect(res).to.have.status(200);

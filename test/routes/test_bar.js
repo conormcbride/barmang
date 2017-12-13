@@ -108,13 +108,13 @@ describe('Bar', function (){
                 });
         });
     });
-    describe('POST /bar/id', function () {
+    describe('PUT /bar/id', function () {
         it('should return confirmation message and update bar earnings', function(done) {
             var earnings = {
                 earnings: 50000
             };
             chai.request(server)
-                .post('/bar/5a00e4020bdef11a9cd6720f')
+                .put('/bar/5a00e4020bdef11a9cd6720f/update')
                 .send(earnings)
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
