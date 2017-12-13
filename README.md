@@ -1,145 +1,84 @@
-# Assignment 1 - API testing and Source Control.
+# Assignment 2 - Automated development process.
 
 Name: Conor McBride
 
+Student No.:  20063017
+
 ## Overview.
+The application pushes up to github,travis and passes to heroku, I have the build set up but not production. There is also build automation.
+Full acceptance testing.
+.
 
-The idea of the project is to create the means for managment to oversee the running of multiple bars can manage them remotely
-through this web application.
-The manager should be able to return a list of all employees across every bar under his/her managmenet, or each staff member
-individually by their unique id.
-The manager should be able to add staff members as the become employed and remove staff members when they decide to leave.
-The manager should also have the option of updating each employee's hourly wage when he/she deems fit.
-A rolling number of days missed or absent should also be available and updateable to the manager when an employee fails
-to show without prior notice.
-## API endpoints.
-STAFF
-app.delete('/staff/:id', staffroutes.deleteStaff);
-This gets the id entered and finds the staff member associated and deletes it.
-/staff/59ff64473a6a8891c13bb4a5
+## Environment.
+mongodb
+node v6.11.3
+git but you can only work out of the workingbranch because the master branch is broken
+I had to roll back my code and had to work from there as I couldn't fix the master including the merge.
+Travis working
 
-app.get('/staff/:id', staffroutes.findOne);
-This gets the id entered and finds the staff member associated then prints it.
-/staff/59ff64473a6a8891c13bb4a5
+I wourked out of webstorm but I'm not sure if that is needed here
 
-app.get('/staff', staffroutes.findAll);
-This prints all staff members.
-/staff
+## Build automation.
+npm run build
+npm run build:dev
+npm test
+mongod in the right file
+mocha test/acceptance runs all of the tests
+List precisely the sequence of steps (i.e. terminal commands) required to build,
+test (Acceptance test) and run the complete app locally - what NPM scripts (and other scripts) to execute.
 
-app.post('/staff', staffroutes.newStaff);
-This takes the information entered and creates a new staff member.
-/staff
-request ={"name":"brian o neill","wage":12.50, "role":"waiter"}
+## Acceptance Testing.
 
-
-app.post('/staff/:id', staffroutes.updateRateOfPay)
-This takes in the id entered and the request to update a staff wages
-/staff/59ff64473a6a8891c13bb4a5
-request = {"wage":12.50}
-
-app.put('/staff/:id', staffroutes.incrementDaysAbscent);
-This takes in the staff id and increments the days absent. If a staff member has 5 or more absences the system tells the
-manager to talk to them about it.
-/staff/59ff64473a6a8891c13bb4a5
-
-BAR
-app.delete('/bar/:id', barroutes.deleteBar);
-This gets the id entered and finds the bar associated and deletes it.
-/bar/59ff8ce67c2ea71884261f16
-
-app.get('/bar/:id', barroutes.findOne);
-This gets the id entered and finds the bar associated then prints it.
-/bar/59ff8ce67c2ea71884261f16
-
-app.get('/bar', barroutes.findAll);
-This prints all staff members.
-/bar
-
-app.post('/bar', barroutes.newBar);
-This takes the information entered and creates a new bar.
-/bar
-request = {"barName": "oneills", "location":"waterford" "earnings":7000};
-
-app.post('/bar/:id', barroutes.updateBarEarnings);
-This takes in the id entered and the request to update the staff earning.
-/bar/59ff8ce67c2ea71884261f16
-request = { "earnings":7000}
+ (2) C:\Users\conor\WebstormProjects\barmangV2\test\acceptance
+ (3) C:\Users\conor\WebstormProjects\barmangV2>mocha test/acceptance
 
 
-## Data storage.
-I have two different schemas in this project.
+  add Bar Page
 
-Bar
-var BarSchema = new mongoose.Schema({
-    barName: String,
-    location: String,
-    earnings: Number
-});
+DevTools listening on ws://127.0.0.1:12915/devtools/browser/68e9e850-bb4f-445a-9e20-466916e2849a
+[10864:6404:1213/075737.819:ERROR:shader_disk_cache.cc(238)] Failed to create shader cache entry: -2
+    √ shows the nav bar on Add Bar Page (86ms)
+    √ shows the main header (161ms)
+    √ accepts a new bar and displays in list (2346ms)
 
-Staff
-var StaffSchema = new mongoose.Schema({
-    name: String,
-    wage: Number,
-    role:String,
-    daysabsent: {type: Number, default: 0}
-});
+  add Staff Page
 
-## Sample Test execution.
-. . . . . In this section include a listing of the output from running your tests, e.g.
+DevTools listening on ws://127.0.0.1:12833/devtools/browser/0bdaaa1d-e0ca-4dac-a1a2-e31bec7a292a
+    √ shows the nav bar on Add staff Page (54ms)
+    √ shows the main header (201ms)
+    √ accepts a new staff and displays in list (2451ms)
 
-        C:\Users\conor\WebstormProjects\barmang>npm test
+  Home page
 
-        > barmang@0.0.0 test C:\Users\conor\WebstormProjects\barmang
-        > mocha --timeout 10000 test/routes/*
+DevTools listening on ws://127.0.0.1:12188/devtools/browser/4858dfd7-07e8-4482-b497-b918f32cbda7
+    √ shows the main body (77ms)
+    √ shows the nav bar
+    √ shows the buttons (224ms)
+    √ shows the main image (132ms)
 
-        (node:8108) DeprecationWarning: `open()` is deprecated in mongoose >= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-client
-          Bar
-            GET /bar
-        connected to database
-        connected to database
-        connected to database
-        (node:8108) DeprecationWarning: Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
-        GET /bar 200 37.972 ms - 209
-              ? should return all the bars in the collection (110ms)
-            GET /bar/id
-        GET /bar/5a00e4020bdef11a9cd6720f 200 12.104 ms - 104
-              ? should return a single staff member from the collection (47ms)
-            POST /Bar
-        Adding bar: undefined
-        POST /bar 200 65.469 ms - 25
-              ? should return confirmation message and update collection (84ms)
-            DELETE /bar
-        DELETE /bar/59f6f0b99bd9dc7f544d7dac 200 13.864 ms - 26
-              ? should return confirmation message and delete staff member (40ms)
-            POST /bar/id
-        POST /bar/5a00e4020bdef11a9cd6720f 200 17.017 ms - 163
-              ? should return confirmation message and update bar earnings (40ms)
+  Bar List page
 
-          Staff
-            GET /staff
-        GET /staff 200 8.384 ms - 198
-              ? should return all the staff members in the collection
-            POST /staff
-        Adding staff member: undefined
-        POST /staff 200 28.502 ms - 33
-              ? should return confirmation message and update collection (45ms)
-            GET /staff/id
-        GET /staff/5a01839c6ae69425c47e1faf 200 11.942 ms - 99
-              ? should return a single staff member from the collection (38ms)
-            POST /staff
-        POST /staff/5a01839c6ae69425c47e1faf 200 13.113 ms - 169
-              ? should return confirmation message and update staff members wages (45ms)
-            DELETE /staff
-        DELETE /staff/59f6f0b99bd9dc7f544d7dac 200 5.602 ms - 35
-              ? should return confirmation message and delete staff member
-            PUT /staff/:id
-        PUT /staff/5a01839c6ae69425c47e1faf 200 23.215 ms - 138
-              ? should change the absent days by one and print message (49ms)
+DevTools listening on ws://127.0.0.1:12044/devtools/browser/17686ae7-421c-4298-9b11-7862926c06d3
+    √ shows the main header (118ms)
+    √ displays the bars (188ms)
+
+  Staff List page
+
+DevTools listening on ws://127.0.0.1:12585/devtools/browser/55619a64-c7a8-4e3f-b294-e2b0dfe62d00
+    √ shows the main header (320ms)
+    √ displays the Staff members (236ms)
 
 
-          11 passing (1s)
+  14 passing (1m)
 
-[ Markdown Tip: By indenting the above listing, GitHub will display it in a 'box' and preserve any formatting.]
 
-## Extra features.
 
+## Continuous Integration.
+https://travis-ci.org/conormcbride/barmang
+git but you can only work out of the workingbranch because the master branch is broken !!!!!!!!!!!
+
+## Automated Deployment.
+https://barmang.herokuapp.com/
+git but you can only work out of the workingbranch because the master branch is broken !!!!!!!!!!!
+
+I push to heroku from github not travis as I couldn't get travis to work

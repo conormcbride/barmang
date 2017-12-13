@@ -1,15 +1,11 @@
 var Staff = require('../models/staff');
 var express = require('express');
 var router = express.Router();
-// var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost:27017/staffs');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/staffs');
 
-var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
-    replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } },
-    user: 'conormcbride', pass: 'LXXURH6t3' };
-var mongodbUri = 'mongodb://ds063XXX.mongolab.com:63892/heroku_XXXXXXXX';
-var mongooseUri = uriUtil.formatMongoose(mongodbUri);
-//var db = mongoose.connection;
+
+var db = mongoose.connection;
 
 router.findAll = function(req, res) {
 

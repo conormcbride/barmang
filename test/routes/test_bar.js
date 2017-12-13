@@ -41,7 +41,7 @@ describe('Bar', function (){
                         bar2._id = "5a00e4020bdef11a9cd6720f";
                         bar2.barName ='martins';
                         bar2.location = "waterford";
-                        bar2.earnings = 50000;
+                        bar2.earnings = 100;
 
                         bar2.save(function (err) {
                             if (err)
